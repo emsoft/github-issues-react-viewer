@@ -1,0 +1,25 @@
+.search-box {
+}
+
+.search-box[disabled] {
+  pointer-events: none;
+}
+
+.search-box[disabled] button,
+.search-box[disabled] input,
+input[readOnly] {
+  opacity: 0.5;
+}
+
+.search-box input {
+  margin-right: 15px;
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .search-box input {
+    margin-right: 0;
+    margin-bottom: 10px;
+    display: block;
+  }
+}

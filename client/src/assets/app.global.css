@@ -1,0 +1,117 @@
+body {
+  background-color: #eeeeee;
+}
+
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box {
+  border-radius: 6px;
+  background-color: #ffffff;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.hr {
+  border-bottom: solid #eeeeee 1px;
+  max-height: 0;
+  margin: 15px 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.error {
+  composes: box;
+  background-color: red;
+  color: #ffffff;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+button,
+select,
+input {
+  border-radius: 4px;
+  border: solid #bbbbbb 1px;
+  background-color: #ffffff;
+  margin: 0;
+  outline: none;
+  padding: 0 15px;
+  height: 33px;
+}
+
+button {
+  height: 35px;
+}
+
+button:hover:enabled,
+button:focus,
+select:hover:enabled,
+select:focus,
+input:focus {
+  border-color: #808080;
+}
+
+button:active:enabled,
+select:active:enabled {
+  background-color: #eeeeee !important;
+}
+
+.table {
+  display: table;
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.row {
+  display: table-row;
+}
+
+.header {
+  composes: row;
+  font-weight: bold;
+}
+
+.row-bottom {
+  display: table-caption;
+  caption-side: bottom;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 0;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+  border-bottom: solid #eeeeee 1px;
+  padding: 5px 10px;
+}
+
+.table .row:last-of-type .cell {
+  border-bottom: none;
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  .box {
+    padding: 10px;
+  }
+
+  .table {
+    display: block;
+  }
+  .header {
+    display: none;
+  }
+}

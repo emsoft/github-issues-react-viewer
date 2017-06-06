@@ -1,0 +1,20 @@
+.cell {
+  composes: cell from '../../assets/app.global.css';
+}
+
+.cell img {
+  width: 40px;
+  height: 40px;
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .cell {
+    display: block;
+    border-bottom: none;
+  }
+
+  .cell:last-child {
+    border-bottom: solid #eeeeee 1px;
+  }
+}

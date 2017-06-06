@@ -1,0 +1,46 @@
+// babel:
+//   Конфигурация в .babelrc для считывания конфигурации для обработки этого файла конфигурации.
+//   npm install babel-loader babel-core babel-polyfill babel-preset-env babel-preset-react webpack --save-dev
+// Для plugins: ['transform-runtime'] установить:
+//   npm install babel-plugin-transform-runtime --save-dev
+//   npm install babel-runtime --save
+// Для динамической загрузки модулей (https://webpack.js.org/guides/code-splitting-import/)
+//   npm install --save-dev babel-plugin-syntax-dynamic-import
+//   modules: false для запрета трансформации, оставить как есть, так как плагин только парсит и не знает как трансформировать этот синтакс.
+//   Чтобы не только парсить, но и трансформировать нужно установить другой плагин:
+//     npm install babel-plugin-dynamic-import-webpack --save-dev
+// Для поддержки декораторов:
+//   npm install --save-dev babel-plugin-transform-decorators-legacy
+//   В списке плагинов должен быть первым, но после после transform-class-properties!
+// Для поддержки синтаксиса инициализации свойств класса:
+//   npm install --save-dev babel-plugin-transform-class-properties
+// react:
+//   npm install --save react react-dom prop-types react-router-dom shortid
+//   npm install --save-dev babel-preset-react react-hot-loader@next
+// mobx:
+//   npm install --save mobx mobx-react
+//   npm install --save-dev mobx-react-devtools
+
+{
+  "presets": [
+    // Если не отключить модули, то не работает как надо React HMR.
+    // Это нужно для dynamic-import-webpack.
+    [
+      "env",
+      {
+        "modules": false
+//        "targets": {
+//          "chrome": 57
+//        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy", // For decorators support, should be listed first. For instance for MobX: @observable, @computed...
+    ["transform-class-properties", { "spec": false }], // https://babeljs.io/docs/plugins/transform-class-properties/
+    "transform-object-rest-spread", // https://babeljs.io/docs/plugins/transform-object-rest-spread/
+    "dynamic-import-webpack", // For new dynamic module loading and transforming to require.ensure.
+    "react-hot-loader/babel" // Enables React code to work with HMR and babel.
+  ]
+}

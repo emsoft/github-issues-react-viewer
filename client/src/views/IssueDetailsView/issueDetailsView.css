@@ -1,0 +1,21 @@
+.box {
+  composes: box from '../../assets/app.global.css';
+  text-align: center;
+}
+
+.header .title {
+  font-size: 150%;
+  float: left;
+}
+
+.header img {
+  height: 40px;
+  width: 40px;
+}
+
+.header .user {
+  float: right;
+}
+
+.body {
+}

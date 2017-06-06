@@ -1,0 +1,20 @@
+// Этот файл используется babel при запуске скрипта через babel-node -
+//   для трансформации самих файлов конфигураций и стартовых скриптов, чтобы использовать ES2015 в файлах конфигураций.
+// Конфиг для исходников уровнем ниже.
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+//    ["transform-class-properties", { "spec": true }], // https://babeljs.io/docs/plugins/transform-class-properties/
+//    "transform-object-rest-spread", // https://babeljs.io/docs/plugins/transform-object-rest-spread/
+//    "dynamic-import-node" // For new dynamic module loading and transforming to require.ensure when used babel-node.
+  ]
+}

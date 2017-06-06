@@ -1,0 +1,31 @@
+.box {
+  composes: box from '../../assets/app.global.css';
+}
+
+.box[disabled] {
+  pointer-events: none;
+}
+
+.box[disabled] button,
+.box[disabled] select {
+  opacity: 0.5;
+}
+
+.hr {
+  composes: hr from '../../assets/app.global.css';
+}
+
+.row-bottom {
+  composes: row-bottom from '../../assets/app.global.css';
+}
+
+/* mobile */
+@media screen and (max-width: 768px) {
+  .hr {
+    display: none;
+  }
+
+  .row-bottom {
+    display: block;
+  }
+}

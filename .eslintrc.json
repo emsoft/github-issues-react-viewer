@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint", // https://github.com/babel/babel-eslint
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "max-len": "off",
+    "linebreak-style": "off",
+    "dot-notation": "off",
+    "indent": "off",
+    "arrow-body-style": "off",
+    "react/sort-comp": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-first-prop-new-line": "off"
+  }
+}
