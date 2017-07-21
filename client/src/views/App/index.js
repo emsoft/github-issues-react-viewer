@@ -14,15 +14,15 @@ class App extends React.Component {
   render() {
     const supportsHistory = 'pushState' in window.history;
     return (
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <Provider issueListState={this.issueListState}>
-            <Switch>
-              <Route exact path="/" component={IssueListView} />
-              <Route exact path="/issue/:number" component={IssueDetailsView} />
-              <Route component={NotFound} />
-            </Switch>
-          </Provider>
-        </BrowserRouter>
+      <BrowserRouter forceRefresh={!supportsHistory}>
+        <Provider issueListState={this.issueListState}>
+          <Switch>
+            <Route exact path="/" component={IssueListView} />
+            <Route exact path="/issue/:number" component={IssueDetailsView} />
+            <Route component={NotFound} />
+          </Switch>
+        </Provider>
+      </BrowserRouter>
     );
   }
 }

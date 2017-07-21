@@ -12,11 +12,14 @@ node_modules/
 .cache/
 tmp
 *~
+.history/
 
-# IntelliJ IDEA files
+# IDE
 .idea/
 *.iml
+.vscode/
 
 # Explicitly include in index
 #!.gitignore
 #!.travis.yml
+client/src/assets/app.global.css

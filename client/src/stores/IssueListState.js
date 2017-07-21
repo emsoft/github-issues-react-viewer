@@ -15,6 +15,8 @@ class IssueListState {
   @observable error = null;
   @observable ownerRepos;
   @observable loadingRepos = false;
+  sortField = null
+  @observable sortDirection = 'desc'
 
   constructor({ owner = '', repo = '' }) {
     this.owner = owner;
@@ -35,8 +37,8 @@ class IssueListState {
     }
     this.loadingRepos = true;
     return Github.repos({ owner: this.owner })
-        .then(this.updateRepos)
-        .catch(this.handleLoadReposError);
+      .then(this.updateRepos)
+      .catch(this.handleLoadReposError);
   }
 
   @action
@@ -48,8 +50,8 @@ class IssueListState {
   @action
   updateIssues = ({ data, pagination: pg }) => {
     this.issues = data.map(i =>
-        new IssueInfo(i.number, i.title, moment(i.created_at).format('YYYY-MM-DD HH:mm'),
-            new UserInfo(i.user.login, i.user.avatar_url, i.user.html_url))
+      new IssueInfo(i.number, i.title, moment(i.created_at).format('YYYY-MM-DD HH:mm'),
+        new UserInfo(i.user.login, i.user.avatar_url, i.user.html_url))
     );
     this.pagination.links = pg;
     this.pagination.currentUrl = null;
@@ -74,9 +76,33 @@ class IssueListState {
       return Promise.resolve();
     }
     this.loadingIssues = true;
-    return Github.issues({ owner: this.owner, repo: this.repo, pagination: this.pagination })
-        .then(this.updateIssues)
-        .catch(this.handleError);
+    return Github.issues({ owner: this.owner, repo: this.repo, pagination: this.pagination, sort: this.sortField, direction: this.sortDirection })
+      .then(this.updateIssues)
+      .catch(this.handleError);
+  }
+
+  @action
+  toggleSortDirection() {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  }
+
+  getSortDirection(field) {
+    if (this.sortField === field) {
+      return this.sortDirection;
+    }
+    return '';
+  }
+
+  sort(field) {
+    if (this.sortField === field) {
+      this.toggleSortDirection();
+    } else {
+      this.sortField = field;
+      if (!this.sortDirection) {
+        this.sortDirection = 'desc';
+      }
+    }
+    this.loadIssues();
   }
 
   @action
